@@ -21,7 +21,7 @@ The extension injects visual badges directly into Gmail and provides a statistic
   - Pie chart visualization
   - Confidence scores
 - ⚡ FastAPI backend deployed on Render  
-- 🧠 TF-IDF + Logistic Regression model  
+- 🧠 TF-IDF + Random Forest classifier  
 
 ---
 
@@ -36,7 +36,7 @@ POST request to Backend API
         ↓
 FastAPI Server (Render)
         ↓
-ML Model (TF-IDF + Logistic Regression)
+ML Model (TF-IDF + Random Forest classifier)
         ↓
 Prediction returned
         ↓
@@ -73,9 +73,10 @@ Pipeline([
         min_df=2,
         max_df=0.95
     )),
-    ("clf", LogisticRegression(
-        max_iter=2500,
-        class_weight="balanced"
+    ("clf", RandomForestClassifier(
+        n_estimators=200,
+        class_weight="balanced",
+        random_state=42
     ))
 ])
 ```
